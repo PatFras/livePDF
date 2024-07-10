@@ -1,0 +1,74 @@
+---
+
+---
+
+<div
+  id="sidebar"
+  class="fixed inset-y-0 left-0 z-30 w-64 bg-gray-800 text-white transition-transform transform -translate-x-full"
+>
+  <div class="flex items-center justify-between p-4">
+    <button id="close-sidebar-button" type="button" class="p-2 text-white">
+      <span class="sr-only">Close sidebar</span>
+      <svg
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+      </svg>
+    </button>
+  </div>
+  <nav class="mt-6">
+    <a
+      href="#"
+      class="block px-4 py-2 text-sm font-semibold text-gray-200 hover:bg-gray-700"
+      >Home</a
+    >
+    <a
+      href="#"
+      class="block px-4 py-2 text-sm font-semibold text-gray-200 hover:bg-gray-700"
+      >About</a
+    >
+    <a
+      href="#"
+      class="block px-4 py-2 text-sm font-semibold text-gray-200 hover:bg-gray-700"
+      >Contact</a
+    >
+  </nav>
+</div>
+
+<style>
+  #sidebar {
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%);
+    position: fixed;
+    height: 100%;
+    width: 16rem; /* Define the width explicitly */
+    background-color: #2c3e50; /* Ensure the background is the same */
+    z-index: 1000; /* Ensure it stays on top */
+  }
+  #sidebar.show {
+    transform: translateX(0);
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const closeSidebarButton = document.getElementById("close-sidebar-button");
+    const sidebar = document.getElementById("sidebar");
+    // Remove contentWrapper logic
+    // const contentWrapper = document.getElementById("content-wrapper");
+    const sidebarButton = document.getElementById("sidebar-button");
+
+    closeSidebarButton.addEventListener("click", () => {
+      sidebar.classList.remove("show");
+      sidebarButton.classList.remove("hidden");
+    });
+  });
+</script>

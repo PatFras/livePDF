@@ -1,0 +1,80 @@
+---
+
+---
+
+<header style="background-color: #2C3E50;">
+  <nav class="flex items-center p-6" aria-label="Global">
+    <!-- Hamburger Button -->
+    <div class="flex">
+      <button
+        id="sidebar-button"
+        type="button"
+        class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-white"
+      >
+        <span class="sr-only">Open sidebar</span>
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Logo -->
+    <div class="flex justify-center">
+      <a href="#" class="-m-1.5 p-1.5">
+        <span class="sr-only">livePDF</span>
+        <img class="h-8 w-auto" src="/logo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <!-- Login -->
+    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+      <a href="#" class="text-sm font-semibold leading-6 text-white"
+        >Log in <span aria-hidden="true">&rarr;</span></a
+      >
+    </div>
+  </nav>
+</header>
+
+<style>
+  header {
+    background-color: #2c3e50;
+    transition: margin-left 0.3s ease-in-out; /* Add transition for smooth effect */
+  }
+  header.shifted {
+    margin-left: 16rem; /* Adjust margin to match sidebar width */
+  }
+  #sidebar-button.hidden {
+    display: none;
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sidebarButton = document.getElementById("sidebar-button");
+    const sidebar = document.getElementById("sidebar");
+    const header = document.querySelector("header");
+
+    sidebarButton.addEventListener("click", () => {
+      sidebar.classList.add("show");
+      sidebarButton.classList.add("hidden");
+      header.classList.add("shifted");
+    });
+
+    const closeSidebarButton = document.getElementById("close-sidebar-button");
+    closeSidebarButton.addEventListener("click", () => {
+      sidebar.classList.remove("show");
+      sidebarButton.classList.remove("hidden");
+      header.classList.remove("shifted");
+    });
+  });
+</script>
