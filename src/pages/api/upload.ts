@@ -28,7 +28,7 @@ const uploadStream = async (buffer: Uint8Array, options: {
 
 const uploadTextFileToVercelBlob = async (fileName: string, content: string) => {
   const endpoint = 'https://api.vercel.com/v2/blob';
-  const apiKey = process.env.BLOB_READ_WRITE_TOKEN; // Añade tu API Key aquí
+  const apiKey = import.meta.env.BLOB_READ_WRITE_TOKEN; // Añade tu API Key aquí
 
   try {
     const response = await axios.post(endpoint, {
