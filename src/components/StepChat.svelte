@@ -2,8 +2,7 @@
   import { Input, Label, Spinner } from "flowbite-svelte";
   import { appStatusInfo, setAppStatusError } from "../store";
 
-  // Añadimos txtFileUrl para obtener la URL del archivo .txt en Vercel Blob
-  const { id, url, pages, txtFileUrl } = $appStatusInfo;
+  const { id, url, pages } = $appStatusInfo;
 
   let answer = "";
   let loading = false;
@@ -29,9 +28,6 @@
     searchParams.append("question", question);
 
     try {
-      // Incluimos la URL del archivo .txt en Vercel Blob en los parámetros
-      searchParams.append("txtFileUrl", txtFileUrl);
-
       const eventSource = new EventSource(
         `/api/ask?${searchParams.toString()}`
       );
