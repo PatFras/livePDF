@@ -2,7 +2,8 @@
   import { Input, Label, Spinner } from "flowbite-svelte";
   import { appStatusInfo, setAppStatusError } from "../store";
 
-  const { id, url, pages } = $appStatusInfo;
+  // Añadimos txtFileUrl para obtener la URL del archivo .txt en Vercel Blob
+  const { id, url, pages, txtFileUrl } = $appStatusInfo;
 
   let answer = "";
   let loading = false;
@@ -28,8 +29,11 @@
     searchParams.append("question", question);
 
     try {
+      // Incluimos la URL del archivo .txt en Vercel Blob en los parámetros
+      searchParams.append("txtFileUrl", txtFileUrl);
+
       const eventSource = new EventSource(
-        `https://live-pdf.vercel.app/api/ask?${searchParams.toString()}`
+        `/api/ask?${searchParams.toString()}`
       );
 
       eventSource.onmessage = (event) => {
